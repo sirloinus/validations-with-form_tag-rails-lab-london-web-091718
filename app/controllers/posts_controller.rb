@@ -14,7 +14,8 @@ class PostsController < ApplicationController
   end
 
   def create
-    if @post.create(post_params)
+    @post = Post.new(post_params)
+    if @post.save
       redirect_to post_path(@post)
     else
       render :new
@@ -29,7 +30,7 @@ class PostsController < ApplicationController
       redirect_to post_path(@post)
     else
       render :edit
-    end 
+    end
   end
 
   private
